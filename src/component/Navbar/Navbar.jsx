@@ -2,7 +2,7 @@ import { Avatar, Badge, Box, IconButton } from "@mui/material";
 import React from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import { pink } from "@mui/material/colors";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import HomeWorkIcon from "@mui/icons-material/HomeWork";
 import "./Navbar.css";
 import { Person } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
@@ -55,7 +55,7 @@ const Navbar = () => {
         <div className="">
           <IconButton onClick={() => navigate("/card")}>
             <Badge color="secondary" badgeContent={cart.cart?.item.length}>
-              <ShoppingCartIcon sx={{ fontSize: "1.5rem" }} />
+              <HomeWorkIcon sx={{ fontSize: "1.5rem" }} />
             </Badge>
           </IconButton>
         </div>

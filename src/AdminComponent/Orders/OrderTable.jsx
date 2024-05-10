@@ -16,6 +16,7 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
+
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -23,42 +24,40 @@ import {
   updateOrderStatus,
 } from "../../component/State/Real Estate Order/Action";
 
-const orderStatus = [
-  { label: "Pending", value: "PANDING" },
-  { label: "Completed", value: "COMPLETED" },
-  { label: "All", value: "ALL" },
-];
-
+// const orderStatus = [
+//   { label: "Pending", value: "PANDING" },
+//   { label: "Completed", value: "COMPLETED" },
+//   { label: "All", value: "ALL" },
+// ];
+const orders = [1, 1, 1, 1, 1, 1, 1, 1, 1];
 const OrderTable = () => {
-  const dispatch = useDispatch();
-  const jwt = localStorage.getItem("jwt");
-  const { realEstate, realEstateOrder, features, property } = useSelector(
-    (store) => store
-  );
+  // const dispatch = useDispatch();
+  // const jwt = localStorage.getItem("jwt");
+  // const { realEstate, features, property } = useSelector((store) => store);
 
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+  // const [anchorEl, setAnchorEl] = React.useState(null);
+  // const open = Boolean(anchorEl);
+  // const handleClick = (event) => {
+  //   setAnchorEl(event.currentTarget);
+  // };
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  // const handleClose = () => {
+  //   setAnchorEl(null);
+  // };
 
-  useEffect(() => {
-    dispatch(
-      fetchRealEstatesOrder({
-        jwt,
-        realEstateId: realEstate.usersRealEstate?.id,
-      })
-    );
-  }, []);
+  // useEffect(() => {
+  //   dispatch(
+  //     fetchRealEstatesOrder({
+  //       jwt,
+  //       realEstateId: realEstate.usersRealEstate?.id,
+  //     })
+  //   );
+  // }, []);
 
-  const handleUpdateOrder = (orderId, orderStatus) => {
-    dispatch(updateOrderStatus({ orderId, orderStatus, jwt }));
-    handleClose();
-  };
+  // const handleUpdateOrder = (orderId, orderStatus) => {
+  //   dispatch(updateOrderStatus({ orderId, orderStatus, jwt }));
+  //   handleClose();
+  // };
 
   return (
     <Box>
@@ -79,40 +78,31 @@ const OrderTable = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {realEstateOrder.orders.map((item) => (
+              {orders.map((row) => (
                 <TableRow
-                  key={item.name}
+                  key={row.name}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">
-                    {item.id}
+                    {1}
                   </TableCell>
                   <TableCell align="right">
-                    <AvatarGroup>
+                    {"image"}
+                    {/* <AvatarGroup>
                       {item.items.map((orderItem) => (
                         <Avatar src={orderItem.property?.images[0]} />
                       ))}
-                    </AvatarGroup>
+                    </AvatarGroup> */}
                   </TableCell>
-                  <TableCell align="right">{item.customer?.fullName}</TableCell>
+                  <TableCell align="right">
+                    {"ozgeerkeskin@hotmail.com"}
+                  </TableCell>
 
-                  <TableCell align="right">{item.totalAmount}</TableCell>
-                  <TableCell align="right">
-                    {item.items.map((orderItem) => (
-                      <p>{orderItem.property?.name}</p>
-                    ))}
-                  </TableCell>
-                  <TableCell align="right">
-                    {item.items.map((orderItem) => (
-                      <div>
-                        {orderItem.features.map((feature) => (
-                          <Chip label={feature} />
-                        ))}
-                      </div>
-                    ))}
-                  </TableCell>
-                  <TableCell align="right">{item.orderStatus}</TableCell>
-                  <TableCell align="right">
+                  <TableCell align="right">{"price"}</TableCell>
+                  <TableCell align="right">{"name"}</TableCell>
+                  <TableCell align="right">{"features"}</TableCell>
+                  <TableCell align="right">{"completed"}</TableCell>
+                  {/* <TableCell align="right">
                     <Button
                       id="basic-button"
                       aria-controls={open ? "basic-menu" : undefined}
@@ -141,7 +131,7 @@ const OrderTable = () => {
                         </MenuItem>
                       ))}
                     </Menu>
-                  </TableCell>
+                  </TableCell> */}
                 </TableRow>
               ))}
             </TableBody>

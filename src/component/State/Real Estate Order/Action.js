@@ -37,7 +37,7 @@ export const fetchRealEstatesOrder = ({ realEstateId, orderStatus, jwt }) => {
     dispatch({ type: GET_REAL_ESTATES_KEY_REQUEST });
     try {
       const { data } = await api.get(
-        `/api/admin/order/realEstate${realEstateId}`,
+        `/api/admin/order/realEstates${realEstateId}`,
 
         {
           headers: {
